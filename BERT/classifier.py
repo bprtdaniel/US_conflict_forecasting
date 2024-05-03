@@ -6,17 +6,6 @@ from transformers import RobertaModel, RobertaTokenizer, RobertaForSequenceClass
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 
-
-
-
-classifier = pipeline("zero-shot-classification", model="MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli")
-
-model = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
-
-candidate_labels = ["environment", "unions", "gun-violence", "healthcare"]
-
-
-
 def get_labels(notes_with_ids, model, candidate_labels):
     results = []
 
@@ -24,20 +13,42 @@ def get_labels(notes_with_ids, model, candidate_labels):
 
     for index, row in notes_with_ids.iterrows():
         event_id = row['event_id']
-        note = row['note']  # Adjust this line if your column name is different
+        note = row['note']  
         sequence_to_classify = note
         output = classifier(sequence_to_classify, candidate_labels, multi_label=False)
         scores_for_note = {label: score for label, score in zip(output["labels"], output["scores"])}
         scores_for_note['Event ID'] = event_id
         results.append(scores_for_note)
 
-    # Convert results to DataFrame
     df = pd.DataFrame(results)
-
-    # Set 'Event ID' as the index
     df.set_index('Event ID', inplace=True)
-
-    # Transpose the DataFrame
-    df = df.T
-
     return df
+
+
+# Define the model
+model = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+
+# Define the classifier pipeline
+classifier = pipeline("zero-shot-classification", model = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli")
+
+# Create the topics to classify on
+candidate_labels = ["environment", "unions", "gun-violence", "healthcare", "racial-justice"]
+
+# Load the input data
+notes = pd.read_csv("test_notes.csv")
+
+
+# Run the classifier
+topics = get_labels(notes, model, candidate_labels)
+
+# Assign 1 to the highest score and 0 to the rest
+topics = topics.apply(lambda row: row == row.max(), axis=1).astype(int)
+
+# Add categotical label variable to the topics dataframe
+topics['label'] = topics.idxmax(axis=1)
+
+# Add additional numerical label variable to the topics dataframe
+topics['label_num'] = topics['label'].map({'environment': 1, 'unions': 2, 'gun-violence': 3, 'healthcare': 4, 'racial-justice': 5})
+
+# Save to csv
+topics.to_csv("topics.csv")
