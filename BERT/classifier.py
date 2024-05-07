@@ -35,7 +35,7 @@ classifier = pipeline("zero-shot-classification", model = "MoritzLaurer/DeBERTa-
 candidate_labels = ["environment", "unions", "gun-violence", "healthcare", "racial-justice"]
 
 # Load the input data
-notes = pd.read_csv("test_notes.csv")
+notes = pd.read_csv("notes.csv")
 
 
 # Run the classifier
