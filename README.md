@@ -5,7 +5,7 @@ Setting up a repo for the United States conflict forecasting model
 To run the scripts, please follow this setup:
 - create a .env file in the 'US_conflict_forecasting' folder and define your local project root:
 ```ini
-PROJECT_ROOT='your/local/file/path/US_conflict_forecasting
+PROJECT_ROOT='your/local/file/path/US_conflict_forecasting'
 ```
 - Ensure that the .env file is included in the .gitignore
 - the configuration module project_setup.py defines your project root as the working directory of the project
