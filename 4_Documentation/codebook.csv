@@ -1,0 +1,118 @@
+variable_name,label,encoded_as,data_source
+event_id_cnty,,,ACLED_ZIP_Subevent_22.csv
+ZCTA5CE10,,,ACLED_ZIP_Subevent_22.csv
+set_peaceful_prot,,,ACLED_ZIP_Subevent_22.csv
+set_other,,,ACLED_ZIP_Subevent_22.csv
+set_prot_int,,,ACLED_ZIP_Subevent_22.csv
+set_mob,,,ACLED_ZIP_Subevent_22.csv
+set_violent_prot,,,ACLED_ZIP_Subevent_22.csv
+set_loot_destr,,,ACLED_ZIP_Subevent_22.csv
+STATEFP10,,,NeighbouringZCTAs.csv
+ZCTA,,,NeighbouringZCTAs.csv
+GEOID10,,,NeighbouringZCTAs.csv
+CLASSFP10,,,NeighbouringZCTAs.csv
+MTFCC10,,,NeighbouringZCTAs.csv
+FUNCSTAT10,,,NeighbouringZCTAs.csv
+ALAND10,,,NeighbouringZCTAs.csv
+AWATER10,,,NeighbouringZCTAs.csv
+INTPTLAT10,,,NeighbouringZCTAs.csv
+INTPTLON10,,,NeighbouringZCTAs.csv
+PARTFLG10,,,NeighbouringZCTAs.csv
+geometry,,,NeighbouringZCTAs.csv
+bordering_ZCTA,,,NeighbouringZCTAs.csv
+month,,,ACLED_conflict_previousyear_allZCTA.csv
+admin2,,,ACLED_conflict_previousyear_allZCTA.csv
+event_count_prev_year,,,ACLED_conflict_previousyear_allZCTA.csv
+event_date,,,joined_ACLED_ZIP_22_PA.csv
+year,,,joined_ACLED_ZIP_22_PA.csv
+time_precision,,,joined_ACLED_ZIP_22_PA.csv
+disorder_type,,,joined_ACLED_ZIP_22_PA.csv
+event_type,,,joined_ACLED_ZIP_22_PA.csv
+sub_event_type,,,joined_ACLED_ZIP_22_PA.csv
+actor1,,,joined_ACLED_ZIP_22_PA.csv
+assoc_actor_1,,,joined_ACLED_ZIP_22_PA.csv
+inter1,,,joined_ACLED_ZIP_22_PA.csv
+actor2,,,joined_ACLED_ZIP_22_PA.csv
+assoc_actor_2,,,joined_ACLED_ZIP_22_PA.csv
+inter2,,,joined_ACLED_ZIP_22_PA.csv
+interaction,,,joined_ACLED_ZIP_22_PA.csv
+civilian_targeting,,,joined_ACLED_ZIP_22_PA.csv
+iso,,,joined_ACLED_ZIP_22_PA.csv
+region,,,joined_ACLED_ZIP_22_PA.csv
+country,,,joined_ACLED_ZIP_22_PA.csv
+admin1,,,joined_ACLED_ZIP_22_PA.csv
+admin3,,,joined_ACLED_ZIP_22_PA.csv
+location,,,joined_ACLED_ZIP_22_PA.csv
+latitude,,,joined_ACLED_ZIP_22_PA.csv
+longitude,,,joined_ACLED_ZIP_22_PA.csv
+geo_precision,,,joined_ACLED_ZIP_22_PA.csv
+source,,,joined_ACLED_ZIP_22_PA.csv
+source_scale,,,joined_ACLED_ZIP_22_PA.csv
+notes,,,joined_ACLED_ZIP_22_PA.csv
+fatalities,,,joined_ACLED_ZIP_22_PA.csv
+tags,,,joined_ACLED_ZIP_22_PA.csv
+timestamp,,,joined_ACLED_ZIP_22_PA.csv
+index_right,,,joined_ACLED_ZIP_22_PA.csv
+event_count,,,ACLED_all_ZCTA_nb.csv
+neighbor_conflicts,,,ACLED_all_ZCTA_nb.csv
+Month,,,ACLED_conflict_previousmonth_allZCTA.csv
+event_count_prev,,,ACLED_conflict_previousmonth_allZCTA.csv
+actor_type1,,,ACLED_ZIP_Actor_22.csv
+actor_type2,,,ACLED_ZIP_Actor_22.csv
+actor_type3,,,ACLED_ZIP_Actor_22.csv
+actor_type4,,,ACLED_ZIP_Actor_22.csv
+actor_type5,,,ACLED_ZIP_Actor_22.csv
+actor_type6,,,ACLED_ZIP_Actor_22.csv
+actor_type7,,,ACLED_ZIP_Actor_22.csv
+actor_type8,,,ACLED_ZIP_Actor_22.csv
+actor_type9,,,ACLED_ZIP_Actor_22.csv
+act_gov,,,ACLED_conflict_all_ZCTA.csv
+act_pol,,,ACLED_conflict_all_ZCTA.csv
+act_nat,,,ACLED_conflict_all_ZCTA.csv
+act_rel,,,ACLED_conflict_all_ZCTA.csv
+act_edu,,,ACLED_conflict_all_ZCTA.csv
+act_wor,,,ACLED_conflict_all_ZCTA.csv
+act_iss,,,ACLED_conflict_all_ZCTA.csv
+act_rwm,,,ACLED_conflict_all_ZCTA.csv
+act_oth,,,ACLED_conflict_all_ZCTA.csv
+unions,,,ACLED_conflict_all_ZCTA.csv
+environment,,,ACLED_conflict_all_ZCTA.csv
+gun-violence,,,ACLED_conflict_all_ZCTA.csv
+healthcare,,,ACLED_conflict_all_ZCTA.csv
+Event ID,,,topics.csv
+label,,,topics.csv
+label_num,,,topics.csv
+topic0,,,All_NewsTopic_Features.csv
+topic1,,,All_NewsTopic_Features.csv
+topic2,,,All_NewsTopic_Features.csv
+topic3,,,All_NewsTopic_Features.csv
+topic4,,,All_NewsTopic_Features.csv
+topic5,,,All_NewsTopic_Features.csv
+topic6,,,All_NewsTopic_Features.csv
+topic7,,,All_NewsTopic_Features.csv
+topic8,,,All_NewsTopic_Features.csv
+topic9,,,All_NewsTopic_Features.csv
+topic10,,,All_NewsTopic_Features.csv
+topic11,,,All_NewsTopic_Features.csv
+topic12,,,All_NewsTopic_Features.csv
+topic13,,,All_NewsTopic_Features.csv
+topic14,,,All_NewsTopic_Features.csv
+event_MY,,,ACLED_Events_21_Clean.csv
+Name,,,All_SocDem_Features.csv
+"Population, 2020",,,All_SocDem_Features.csv
+"# Square Land Miles, 2020",,,All_SocDem_Features.csv
+"Population per Square Land Mile, 2022",,,All_SocDem_Features.csv
+Rural_Urban_Commerical,,,All_SocDem_Features.csv
+"Total Population, 2022",,,All_SocDem_Features.csv
+"Median age, 2022",,,All_SocDem_Features.csv
+"<18 Years Old, 2022",,,All_SocDem_Features.csv
+"18 to 34 Years Old, 2022",,,All_SocDem_Features.csv
+"35 to 64 Years Old, 2022",,,All_SocDem_Features.csv
+"65+ Years Old, 2022",,,All_SocDem_Features.csv
+"White, Not Hispanic or Latino, 2022",,,All_SocDem_Features.csv
+"Black or African American, Not Hispanic or Latino, 2022",,,All_SocDem_Features.csv
+"Asian, Not Hispanic or Latino, 2022",,,All_SocDem_Features.csv
+"Other Races, Not Hispanic or Latino, 2022",,,All_SocDem_Features.csv
+"Two or more races, 2022",,,All_SocDem_Features.csv
+"Hispanic or Latino (Any Race), 2022",,,All_SocDem_Features.csv
+"Poverty Rate, 2022",,,All_SocDem_Features.csv
