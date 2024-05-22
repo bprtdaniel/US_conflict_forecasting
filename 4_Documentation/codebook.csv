@@ -1,118 +1,118 @@
-var_name,label,level,var_length,data_source
-event_id_cnty,,,761,ACLED_ZIP_Subevent_22.csv
-ZCTA5CE10,,,124,ACLED_ZIP_Subevent_22.csv
-set_peaceful_prot,,,2,ACLED_ZIP_Subevent_22.csv
-set_other,,,2,ACLED_ZIP_Subevent_22.csv
-set_prot_int,,,2,ACLED_ZIP_Subevent_22.csv
-set_mob,,,2,ACLED_ZIP_Subevent_22.csv
-set_violent_prot,,,2,ACLED_ZIP_Subevent_22.csv
-set_loot_destr,,,2,ACLED_ZIP_Subevent_22.csv
-STATEFP10,,,1,NeighbouringZCTAs.csv
-ZCTA,,,1798,NeighbouringZCTAs.csv
-GEOID10,,,1798,NeighbouringZCTAs.csv
-CLASSFP10,,,1,NeighbouringZCTAs.csv
-MTFCC10,,,1,NeighbouringZCTAs.csv
-FUNCSTAT10,,,1,NeighbouringZCTAs.csv
-ALAND10,,,1798,NeighbouringZCTAs.csv
-AWATER10,,,1331,NeighbouringZCTAs.csv
-INTPTLAT10,,,1798,NeighbouringZCTAs.csv
-INTPTLON10,,,1798,NeighbouringZCTAs.csv
-PARTFLG10,,,1,NeighbouringZCTAs.csv
-geometry,,,1798,NeighbouringZCTAs.csv
-bordering_ZCTA,,,1761,NeighbouringZCTAs.csv
-month,,,12,ACLED_conflict_previousyear_allZCTA.csv
-admin2,,,47,ACLED_conflict_previousyear_allZCTA.csv
-event_count_prev_year,,,19,ACLED_conflict_previousyear_allZCTA.csv
-event_date,,,292,joined_ACLED_ZIP_22_PA.csv
-year,,,1,joined_ACLED_ZIP_22_PA.csv
-time_precision,,,2,joined_ACLED_ZIP_22_PA.csv
-disorder_type,,,3,joined_ACLED_ZIP_22_PA.csv
-event_type,,,3,joined_ACLED_ZIP_22_PA.csv
-sub_event_type,,,6,joined_ACLED_ZIP_22_PA.csv
-actor1,,,7,joined_ACLED_ZIP_22_PA.csv
-assoc_actor_1,,,327,joined_ACLED_ZIP_22_PA.csv
-inter1,,,5,joined_ACLED_ZIP_22_PA.csv
-actor2,,,4,joined_ACLED_ZIP_22_PA.csv
-assoc_actor_2,,,11,joined_ACLED_ZIP_22_PA.csv
-inter2,,,5,joined_ACLED_ZIP_22_PA.csv
-interaction,,,10,joined_ACLED_ZIP_22_PA.csv
-civilian_targeting,,,1,joined_ACLED_ZIP_22_PA.csv
-iso,,,1,joined_ACLED_ZIP_22_PA.csv
-region,,,1,joined_ACLED_ZIP_22_PA.csv
-country,,,1,joined_ACLED_ZIP_22_PA.csv
-admin1,,,1,joined_ACLED_ZIP_22_PA.csv
-admin3,,,0,joined_ACLED_ZIP_22_PA.csv
-location,,,127,joined_ACLED_ZIP_22_PA.csv
-latitude,,,125,joined_ACLED_ZIP_22_PA.csv
-longitude,,,126,joined_ACLED_ZIP_22_PA.csv
-geo_precision,,,3,joined_ACLED_ZIP_22_PA.csv
-source,,,304,joined_ACLED_ZIP_22_PA.csv
-source_scale,,,15,joined_ACLED_ZIP_22_PA.csv
-notes,,,761,joined_ACLED_ZIP_22_PA.csv
-fatalities,,,2,joined_ACLED_ZIP_22_PA.csv
-tags,,,138,joined_ACLED_ZIP_22_PA.csv
-timestamp,,,144,joined_ACLED_ZIP_22_PA.csv
-index_right,,,124,joined_ACLED_ZIP_22_PA.csv
-event_count,,,23,ACLED_all_ZCTA_nb.csv
-neighbor_conflicts,,,24,ACLED_all_ZCTA_nb.csv
-Month,,,12,ACLED_conflict_previousmonth_allZCTA.csv
-event_count_prev,,,22,ACLED_conflict_previousmonth_allZCTA.csv
-actor_type1,,,2,ACLED_ZIP_Actor_22.csv
-actor_type2,,,2,ACLED_ZIP_Actor_22.csv
-actor_type3,,,2,ACLED_ZIP_Actor_22.csv
-actor_type4,,,2,ACLED_ZIP_Actor_22.csv
-actor_type5,,,2,ACLED_ZIP_Actor_22.csv
-actor_type6,,,2,ACLED_ZIP_Actor_22.csv
-actor_type7,,,2,ACLED_ZIP_Actor_22.csv
-actor_type8,,,2,ACLED_ZIP_Actor_22.csv
-actor_type9,,,2,ACLED_ZIP_Actor_22.csv
-act_gov,,,2,ACLED_conflict_all_ZCTA.csv
-act_pol,,,2,ACLED_conflict_all_ZCTA.csv
-act_nat,,,2,ACLED_conflict_all_ZCTA.csv
-act_rel,,,2,ACLED_conflict_all_ZCTA.csv
-act_edu,,,2,ACLED_conflict_all_ZCTA.csv
-act_wor,,,2,ACLED_conflict_all_ZCTA.csv
-act_iss,,,2,ACLED_conflict_all_ZCTA.csv
-act_rwm,,,2,ACLED_conflict_all_ZCTA.csv
-act_oth,,,2,ACLED_conflict_all_ZCTA.csv
-unions,,,2,ACLED_conflict_all_ZCTA.csv
-environment,,,2,ACLED_conflict_all_ZCTA.csv
-gun-violence,,,2,ACLED_conflict_all_ZCTA.csv
-healthcare,,,2,ACLED_conflict_all_ZCTA.csv
-Event ID,,,761,topics.csv
-label,,,4,topics.csv
-label_num,,,4,topics.csv
-topic0,,,12,All_NewsTopic_Features.csv
-topic1,,,12,All_NewsTopic_Features.csv
-topic2,,,12,All_NewsTopic_Features.csv
-topic3,,,12,All_NewsTopic_Features.csv
-topic4,,,12,All_NewsTopic_Features.csv
-topic5,,,12,All_NewsTopic_Features.csv
-topic6,,,12,All_NewsTopic_Features.csv
-topic7,,,12,All_NewsTopic_Features.csv
-topic8,,,12,All_NewsTopic_Features.csv
-topic9,,,12,All_NewsTopic_Features.csv
-topic10,,,12,All_NewsTopic_Features.csv
-topic11,,,12,All_NewsTopic_Features.csv
-topic12,,,12,All_NewsTopic_Features.csv
-topic13,,,12,All_NewsTopic_Features.csv
-topic14,,,12,All_NewsTopic_Features.csv
-event_MY,,,12,ACLED_Events_21_Clean.csv
-Name,,,1642,All_SocDem_Features.csv
-"Population, 2020",,,1570,All_SocDem_Features.csv
-"# Square Land Miles, 2020",,,1833,All_SocDem_Features.csv
-"Population per Square Land Mile, 2022",,,1829,All_SocDem_Features.csv
-Rural_Urban_Commerical,,,3,All_SocDem_Features.csv
-"Total Population, 2022",,,1572,All_SocDem_Features.csv
-"Median age, 2022",,,418,All_SocDem_Features.csv
-"<18 Years Old, 2022",,,1701,All_SocDem_Features.csv
-"18 to 34 Years Old, 2022",,,1723,All_SocDem_Features.csv
-"35 to 64 Years Old, 2022",,,1759,All_SocDem_Features.csv
-"65+ Years Old, 2022",,,1736,All_SocDem_Features.csv
-"White, Not Hispanic or Latino, 2022",,,1559,All_SocDem_Features.csv
-"Black or African American, Not Hispanic or Latino, 2022",,,1105,All_SocDem_Features.csv
-"Asian, Not Hispanic or Latino, 2022",,,995,All_SocDem_Features.csv
-"Other Races, Not Hispanic or Latino, 2022",,,841,All_SocDem_Features.csv
-"Two or more races, 2022",,,1427,All_SocDem_Features.csv
-"Hispanic or Latino (Any Race), 2022",,,1285,All_SocDem_Features.csv
-"Poverty Rate, 2022",,,1632,All_SocDem_Features.csv
+var_name,var_label,var_encoding,var_level,var_length,data_source
+event_id_cnty,,,,761,ACLED_ZIP_Subevent_22.csv
+ZCTA5CE10,,,,124,ACLED_ZIP_Subevent_22.csv
+set_peaceful_prot,,,,2,ACLED_ZIP_Subevent_22.csv
+set_other,,,,2,ACLED_ZIP_Subevent_22.csv
+set_prot_int,,,,2,ACLED_ZIP_Subevent_22.csv
+set_mob,,,,2,ACLED_ZIP_Subevent_22.csv
+set_violent_prot,,,,2,ACLED_ZIP_Subevent_22.csv
+set_loot_destr,,,,2,ACLED_ZIP_Subevent_22.csv
+STATEFP10,,,,1,NeighbouringZCTAs.csv
+ZCTA,,,,1798,NeighbouringZCTAs.csv
+GEOID10,,,,1798,NeighbouringZCTAs.csv
+CLASSFP10,,,,1,NeighbouringZCTAs.csv
+MTFCC10,,,,1,NeighbouringZCTAs.csv
+FUNCSTAT10,,,,1,NeighbouringZCTAs.csv
+ALAND10,,,,1798,NeighbouringZCTAs.csv
+AWATER10,,,,1331,NeighbouringZCTAs.csv
+INTPTLAT10,,,,1798,NeighbouringZCTAs.csv
+INTPTLON10,,,,1798,NeighbouringZCTAs.csv
+PARTFLG10,,,,1,NeighbouringZCTAs.csv
+geometry,,,,1798,NeighbouringZCTAs.csv
+bordering_ZCTA,,,,1761,NeighbouringZCTAs.csv
+month,,,,12,ACLED_conflict_previousyear_allZCTA.csv
+admin2,,,,47,ACLED_conflict_previousyear_allZCTA.csv
+event_count_prev_year,,,,19,ACLED_conflict_previousyear_allZCTA.csv
+event_date,,,,292,joined_ACLED_ZIP_22_PA.csv
+year,,,,1,joined_ACLED_ZIP_22_PA.csv
+time_precision,,,,2,joined_ACLED_ZIP_22_PA.csv
+disorder_type,,,,3,joined_ACLED_ZIP_22_PA.csv
+event_type,,,,3,joined_ACLED_ZIP_22_PA.csv
+sub_event_type,,,,6,joined_ACLED_ZIP_22_PA.csv
+actor1,,,,7,joined_ACLED_ZIP_22_PA.csv
+assoc_actor_1,,,,327,joined_ACLED_ZIP_22_PA.csv
+inter1,,,,5,joined_ACLED_ZIP_22_PA.csv
+actor2,,,,4,joined_ACLED_ZIP_22_PA.csv
+assoc_actor_2,,,,11,joined_ACLED_ZIP_22_PA.csv
+inter2,,,,5,joined_ACLED_ZIP_22_PA.csv
+interaction,,,,10,joined_ACLED_ZIP_22_PA.csv
+civilian_targeting,,,,1,joined_ACLED_ZIP_22_PA.csv
+iso,,,,1,joined_ACLED_ZIP_22_PA.csv
+region,,,,1,joined_ACLED_ZIP_22_PA.csv
+country,,,,1,joined_ACLED_ZIP_22_PA.csv
+admin1,,,,1,joined_ACLED_ZIP_22_PA.csv
+admin3,,,,0,joined_ACLED_ZIP_22_PA.csv
+location,,,,127,joined_ACLED_ZIP_22_PA.csv
+latitude,,,,125,joined_ACLED_ZIP_22_PA.csv
+longitude,,,,126,joined_ACLED_ZIP_22_PA.csv
+geo_precision,,,,3,joined_ACLED_ZIP_22_PA.csv
+source,,,,304,joined_ACLED_ZIP_22_PA.csv
+source_scale,,,,15,joined_ACLED_ZIP_22_PA.csv
+notes,,,,761,joined_ACLED_ZIP_22_PA.csv
+fatalities,,,,2,joined_ACLED_ZIP_22_PA.csv
+tags,,,,138,joined_ACLED_ZIP_22_PA.csv
+timestamp,,,,144,joined_ACLED_ZIP_22_PA.csv
+index_right,,,,124,joined_ACLED_ZIP_22_PA.csv
+event_count,,,,23,ACLED_all_ZCTA_nb.csv
+neighbor_conflicts,,,,24,ACLED_all_ZCTA_nb.csv
+Month,,,,12,ACLED_conflict_previousmonth_allZCTA.csv
+event_count_prev,,,,22,ACLED_conflict_previousmonth_allZCTA.csv
+actor_type1,,,,2,ACLED_ZIP_Actor_22.csv
+actor_type2,,,,2,ACLED_ZIP_Actor_22.csv
+actor_type3,,,,2,ACLED_ZIP_Actor_22.csv
+actor_type4,,,,2,ACLED_ZIP_Actor_22.csv
+actor_type5,,,,2,ACLED_ZIP_Actor_22.csv
+actor_type6,,,,2,ACLED_ZIP_Actor_22.csv
+actor_type7,,,,2,ACLED_ZIP_Actor_22.csv
+actor_type8,,,,2,ACLED_ZIP_Actor_22.csv
+actor_type9,,,,2,ACLED_ZIP_Actor_22.csv
+act_gov,,,,2,ACLED_conflict_all_ZCTA.csv
+act_pol,,,,2,ACLED_conflict_all_ZCTA.csv
+act_nat,,,,2,ACLED_conflict_all_ZCTA.csv
+act_rel,,,,2,ACLED_conflict_all_ZCTA.csv
+act_edu,,,,2,ACLED_conflict_all_ZCTA.csv
+act_wor,,,,2,ACLED_conflict_all_ZCTA.csv
+act_iss,,,,2,ACLED_conflict_all_ZCTA.csv
+act_rwm,,,,2,ACLED_conflict_all_ZCTA.csv
+act_oth,,,,2,ACLED_conflict_all_ZCTA.csv
+unions,,,,2,ACLED_conflict_all_ZCTA.csv
+environment,,,,2,ACLED_conflict_all_ZCTA.csv
+gun-violence,,,,2,ACLED_conflict_all_ZCTA.csv
+healthcare,,,,2,ACLED_conflict_all_ZCTA.csv
+Event ID,,,,761,topics.csv
+label,,,,4,topics.csv
+label_num,,,,4,topics.csv
+topic0,,,,12,All_NewsTopic_Features.csv
+topic1,,,,12,All_NewsTopic_Features.csv
+topic2,,,,12,All_NewsTopic_Features.csv
+topic3,,,,12,All_NewsTopic_Features.csv
+topic4,,,,12,All_NewsTopic_Features.csv
+topic5,,,,12,All_NewsTopic_Features.csv
+topic6,,,,12,All_NewsTopic_Features.csv
+topic7,,,,12,All_NewsTopic_Features.csv
+topic8,,,,12,All_NewsTopic_Features.csv
+topic9,,,,12,All_NewsTopic_Features.csv
+topic10,,,,12,All_NewsTopic_Features.csv
+topic11,,,,12,All_NewsTopic_Features.csv
+topic12,,,,12,All_NewsTopic_Features.csv
+topic13,,,,12,All_NewsTopic_Features.csv
+topic14,,,,12,All_NewsTopic_Features.csv
+event_MY,,,,12,ACLED_Events_21_Clean.csv
+Name,,,,1642,All_SocDem_Features.csv
+"Population, 2020",,,,1570,All_SocDem_Features.csv
+"# Square Land Miles, 2020",,,,1833,All_SocDem_Features.csv
+"Population per Square Land Mile, 2022",,,,1829,All_SocDem_Features.csv
+Rural_Urban_Commerical,,,,3,All_SocDem_Features.csv
+"Total Population, 2022",,,,1572,All_SocDem_Features.csv
+"Median age, 2022",,,,418,All_SocDem_Features.csv
+"<18 Years Old, 2022",,,,1701,All_SocDem_Features.csv
+"18 to 34 Years Old, 2022",,,,1723,All_SocDem_Features.csv
+"35 to 64 Years Old, 2022",,,,1759,All_SocDem_Features.csv
+"65+ Years Old, 2022",,,,1736,All_SocDem_Features.csv
+"White, Not Hispanic or Latino, 2022",,,,1559,All_SocDem_Features.csv
+"Black or African American, Not Hispanic or Latino, 2022",,,,1105,All_SocDem_Features.csv
+"Asian, Not Hispanic or Latino, 2022",,,,995,All_SocDem_Features.csv
+"Other Races, Not Hispanic or Latino, 2022",,,,841,All_SocDem_Features.csv
+"Two or more races, 2022",,,,1427,All_SocDem_Features.csv
+"Hispanic or Latino (Any Race), 2022",,,,1285,All_SocDem_Features.csv
+"Poverty Rate, 2022",,,,1632,All_SocDem_Features.csv
