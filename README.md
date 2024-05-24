@@ -6,7 +6,7 @@ The primary goal of the project was to offer predictions of potential conflict h
 
 Features used in the model:
 
-Conflict Features: Historical data on conflicts.
+- Conflict Features: Historical data on conflicts.
 - Sociodemographic Features: Demographic and economic data.
 - Election-Specific Features: Political dynamics and election cycles.
 - Current Issues: Contemporary issues influencing protests.
