@@ -70,10 +70,10 @@ angle_theme <- theme(plot.title = element_text(hjust = 0.5, size = 14),
 ```{r, include = TRUE, echo = TRUE, results = 'hide'}
 
 ## load merged dataset
-data_raw <- read.csv("./2_Dataset/d_Final_Dataset/Final_Dataset_Lag.csv", sep = ",")
+data_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset_Lag.csv", sep = ",")
 
 ## load final clean dataset
-data_final_raw <- read.csv("./2_Dataset/d_Final_Dataset/Final_Dataset.csv")
+data_final_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset.csv")
 
 ## clean data
 data <- data_final_raw %>% janitor::clean_names() %>%
@@ -86,7 +86,7 @@ data <- data_final_raw %>% janitor::clean_names() %>%
   
 
 ## load all ACLED data
-data_acled_all <- read.csv("./2_Dataset/a_Input_Datasets/US2020_2023.csv", sep = ",")
+data_acled_all <- read.csv("../2_Dataset/a_Input_Datasets/US2020_2023.csv", sep = ",")
 
 ```
 <br>
@@ -164,7 +164,7 @@ p <- ggplot(df_all, aes(reorder(name_of_zip_code, -tot_events), tot_events, fill
 print(p)
 
 ## save plot
-ggsave("./4_Documentation/figures/zips_events.png", plot = p, width = 10, height = 6, dpi = 300)
+ggsave("./figures/zips_events.png", plot = p, width = 10, height = 6, dpi = 300)
 
 ```
 <br>
@@ -188,7 +188,7 @@ p <- ggplot(df_all, aes(x = tot_events, y = population_per_square_land_mile_2022
 print(p)
 
 ## save plot
-ggsave("4_Documentation/figures/scatter_pop_events_zips.png", plot = p, width = 10, height = 6, dpi = 300)
+ggsave("./figures/scatter_pop_events_zips.png", plot = p, width = 10, height = 6, dpi = 300)
 
 ```
 <br>
@@ -219,7 +219,7 @@ p <- ggplot(df, aes(month, tot_events, fill = factor(month))) +
 print(p)
 
 ## save plot
-ggsave("4_Documentation/figures/months_events.png", plot = p, width = 10, height = 6, dpi = 300)
+ggsave("./figures/months_events.png", plot = p, width = 10, height = 6, dpi = 300)
 
 ```
 <br>
@@ -259,7 +259,7 @@ p <- modelsummary::modelplot(list("simple" = reg1, "zip fixed effects" = reg2),
 print(p)
 
 ## save plot
-ggsave("./4_Documentation/figures/months_lag.png", plot = p, width = 10, height = 6, dpi = 300)
+ggsave("./figures/months_lag.png", plot = p, width = 10, height = 6, dpi = 300)
 
 
 
@@ -280,38 +280,6 @@ ggsave("./4_Documentation/figures/months_lag.png", plot = p, width = 10, height 
 
 ```
 <br>
-
-
-## Regression analysis
-```{r, include = TRUE, echo = TRUE}
-
-## basic regression
-lm(event_count ~ event_count_prev_month, data = df_lag) %>% summary()
-
-## reg with fixed effects: significant and positive
-reg1 <- estimatr::lm_robust(event_count ~ event_count_prev_month, data = df_lag, se_type = "HC1")
-
-## reg without FE: insignificant but positive
-reg2 <- estimatr::lm_robust(event_count ~ event_count_prev_month, data = df_lag, fixed_effects = ~zcta, se_type = "HC1")
-
-## display results
-p <- modelsummary::modelplot(list("simple" = reg1, "zip fixed effects" = reg2),
-                        coef_omit = "(Intercept)") +
-  geom_vline(xintercept = 0) +
-  labs(title = "Bivariate Correlation: Conflict in Previous vs. Current Months",
-       x = "",
-       y = "",
-       caption = "Shown is the strength of the correlation between conflict events \n on ZIP code level in PA in previous and current months in 2022") +
-  angle_theme
-
-print(p)
-
-## save plot
-ggsave("./4_Documentation/figures/zips_lag.png", plot = p, width = 10, height = 6, dpi = 300)
-
-```
-<br>
-
 
 #### Event counts by month
 ```{r, include = TRUE, echo = TRUE}
@@ -360,11 +328,8 @@ print(p)
 <br>
 
 
-
-
-
-
-
+<hr>
+<br>
 
 
 
@@ -437,10 +402,8 @@ p <- ggplot(data = map_data, aes(x = long, y = lat, group = group, fill = tot_ev
 print(p)
 
 ## save plot
-ggsave("4_Documentation/figures/us_heatmap.png", plot = p, width = 10, height = 6, dpi = 300)
+ggsave("./figures/us_heatmap.png", plot = p, width = 10, height = 6, dpi = 300)
 
 ```
-
-
 
 
