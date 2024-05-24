@@ -44,19 +44,13 @@ Will this affect any of your modeling choices?
 ```{r, include = TRUE, echo = TRUE, results = 'hide'}
 
 ## load packages
-pacman::p_load(reticulate, tidyverse, haven, readxl, writexl, stringr, ggplot2, sf, maps, viridis, modelsummary, gt, knitr, kableExtra, janitor, corrplot, report)
+pacman::p_load(reticulate, tidyverse, haven, readxl, writexl, stringr, ggplot2, sf, maps, viridis, modelsummary, gt, webshot2, knitr, kableExtra, janitor, corrplot, report)
 
-## set working directory
-#project_root_dir <- py$project_root_dir
-#setwd(project_root_dir)
-
-#setwd("/Users/varvarailyina/hertie/ML/US_conflict_forecasting/")
+## check working directory
 getwd()
-
 
 ## set colors
 #COL2 <- colorRampPalette(c("goldenrod3", "white", "purple1"))
-
 
 ## create theme for ggplot
 angle_theme <- theme(plot.title = element_text(hjust = 0.5, size = 14),
@@ -75,15 +69,20 @@ angle_theme <- theme(plot.title = element_text(hjust = 0.5, size = 14),
 ## Import / clean data
 ```{r, include = TRUE, echo = TRUE, results = 'hide'}
 
-## load final dataset
-data_final_raw <- read.csv("./2_Dataset/d_Final_Dataset/Final_Dataset_Lag.csv", sep = ",")
+## load merged dataset
+data_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset_Lag.csv", sep = ",")
+
+## load merged dataset
+data_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset_Lag.csv", sep = ",")
+
+## load final clean dataset
+data_clean_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset_Lag_clean.csv")
 
 ## clean data
-data <- data_final_raw %>% janitor::clean_names()
-
+data <- data_clean_raw %>% janitor::clean_names()
 
 ## load all ACLED data
-data_acled_all <- read.csv("./2_Dataset/a_Input_Datasets/US2020_2023.csv", sep = ",")
+data_acled_all <- read.csv("../2_Dataset/a_Input_Datasets/US2020_2023.csv", sep = ",")
 
 ```
 <br>
@@ -163,21 +162,20 @@ p <- ggplot(df_all, aes(reorder(post_office_city_name, -tot_events), tot_events,
 print(p)
 
 ## save plot
-ggsave("4_Documentation/figures/zips_events.png", plot = p, width = 10, height = 7, dpi = 300)
+ggsave("./figures/zips_events.png", plot = p, width = 10, height = 6, dpi = 300)
 
 ```
 <br>
 
 ```{r, include = TRUE, echo = TRUE}
 
-## merge names onto zip code df
-df_all <- left_join(df, df_tmp, by = "zcta") %>%
-  filter(tot_events > 0)
+## set title
+title <- "Number of Conflicts vs. Population Density \n in PA Counties with Highest Number of Conflicts in 2022"
 
 ## plot pop density vs. events
 p <- ggplot(df_all, aes(x = tot_events, y = population_per_square_land_mile_2022, color = factor(post_office_city_name))) +
   geom_point(size = 3) +
-  labs(title = "Number of Conflicts vs. Population Density in PA Counties with Highest Number of Conflicts in 2022",
+  labs(title = title,
        x = "Number of Conflict Events",
        y = "Population Density",
        caption = "Only includes counties with more than 5 conflicts in 2022") +
@@ -188,7 +186,7 @@ p <- ggplot(df_all, aes(x = tot_events, y = population_per_square_land_mile_2022
 print(p)
 
 ## save plot
-ggsave("4_Documentation/figures/scatter_pop_events_zips.png", plot = p, width = 10, height = 7, dpi = 300)
+ggsave("4_Documentation/figures/scatter_pop_events_zips.png", plot = p, width = 10, height = 6, dpi = 300)
 
 
 ## plot pop density for zips with most events
@@ -237,7 +235,7 @@ p <- ggplot(df, aes(month, tot_events, fill = factor(month))) +
 print(p)
 
 ## save plot
-ggsave("4_Documentation/figures/months_events.png", plot = p, width = 10, height = 7, dpi = 300)
+ggsave("4_Documentation/figures/months_events.png", plot = p, width = 10, height = 6, dpi = 300)
 
 ```
 <br>
@@ -258,7 +256,8 @@ df %>%
   unique() %>%
   arrange(desc(tot_events_2022)) %>%
   slice(1:10) %>%
-  gt()
+  gt() %>%
+  gtsave("4_Documentation/tables/events_by_state.png")
 
 ```
 <br>
@@ -310,7 +309,7 @@ p <- ggplot(data = map_data, aes(x = long, y = lat, group = group, fill = tot_ev
 print(p)
 
 ## save plot
-ggsave("4_Documentation/figures/us_heatmap.png", plot = p, width = 10, height = 7, dpi = 300)
+ggsave("4_Documentation/figures/us_heatmap.png", plot = p, width = 10, height = 6, dpi = 300)
 
 ```
 
