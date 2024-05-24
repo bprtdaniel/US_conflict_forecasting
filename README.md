@@ -38,6 +38,12 @@ Grid search was used to optimize parameters for Random Forest and XGBoost models
 Models were evaluated using Mean Squared Error (MSE) and Root Mean Squared Error (RMSE). Comparisons between models with and without time-lag features identified the most predictive features.
 
 
+Ultimately, this project aims to enhance security and preparedness for individuals, organizations, and governments down to the ZIP code level. Ideally, we envision this project as a real-time protest forecaster, continuously utilizing updated protest and conflict data at the most granular geographical level. These models are designed to serve as the algorithmic foundation for predicting protests in the coming months across various geographic areas. 
+
+
+Our project was modeled according to the ACLED CAST framework.
+
+
 ### Project Setup:  
 To run the scripts, please follow this setup:
 - create a .env file in the 'US_conflict_forecasting' folder and define your local project root:
