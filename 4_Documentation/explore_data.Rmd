@@ -50,7 +50,7 @@ pacman::p_load(reticulate, tidyverse, haven, readxl, writexl, stringr, ggplot2, 
 #project_root_dir <- py$project_root_dir
 #setwd(project_root_dir)
 
-setwd("/Users/varvarailyina/hertie/ML/US_conflict_forecasting/")
+#setwd("/Users/varvarailyina/hertie/ML/US_conflict_forecasting/")
 getwd()
 
 
