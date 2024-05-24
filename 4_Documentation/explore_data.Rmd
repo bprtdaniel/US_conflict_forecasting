@@ -109,10 +109,8 @@ vars_keep <- names(codebook)
 <br>
 
 
-
-
-
-
+<hr>
+<br>
 
 
 ## Zip codes with most events
@@ -192,24 +190,6 @@ print(p)
 ## save plot
 ggsave("4_Documentation/figures/scatter_pop_events_zips.png", plot = p, width = 10, height = 6, dpi = 300)
 
-
-## plot pop density for zips with most events
-#p <- ggplot(df_all, aes(reorder(admin2, -tot_events), population_per_square_land_mile_2022, fill = factor(admin2))) +
-#  geom_bar(stat = "identity", position = "dodge", fill = "steelblue3") +
-#  labs(title = "Number of Conflicts in 
-#       Population in PA Counties with Highest Number of Conflicts in 2022",
-#       #subtitle = "subtitle",
-#       x = "",
-#       y = "Population",
-#       caption = "Only includes counties with more than 5 conflicts in 2022") +
-#  scale_y_continuous(limits = c(0, max(df_all$population_per_square_land_mile_2022 + 20))) +
-#  #geom_text(aes(admin2, tot_events, label = str_c(tot_events, " %")),
-#  geom_text(aes(admin2, tot_events, label = tot_events),
-#            position = position_dodge(0.9), vjust = -0.5, size = 3) +
-#  angle_theme + theme(legend.position = "none")
-
-#print(p)
-
 ```
 <br>
 
@@ -279,7 +259,10 @@ p <- modelsummary::modelplot(list("simple" = reg1, "zip fixed effects" = reg2),
 print(p)
 
 ## save plot
-ggsave("4_Documentation/figures/months_lag.png", plot = p, width = 10, height = 6, dpi = 300)
+ggsave("./4_Documentation/figures/months_lag.png", plot = p, width = 10, height = 6, dpi = 300)
+
+
+
 
 # bivariate correlation: strength of corr between prior conflict num and currect conflict num
 # both are positive, makes sense to use lags
@@ -294,6 +277,37 @@ ggsave("4_Documentation/figures/months_lag.png", plot = p, width = 10, height = 
 
 #zip code fixed effects to cancel out unobserved differences between zips
 
+
+```
+<br>
+
+
+## Regression analysis
+```{r, include = TRUE, echo = TRUE}
+
+## basic regression
+lm(event_count ~ event_count_prev_month, data = df_lag) %>% summary()
+
+## reg with fixed effects: significant and positive
+reg1 <- estimatr::lm_robust(event_count ~ event_count_prev_month, data = df_lag, se_type = "HC1")
+
+## reg without FE: insignificant but positive
+reg2 <- estimatr::lm_robust(event_count ~ event_count_prev_month, data = df_lag, fixed_effects = ~zcta, se_type = "HC1")
+
+## display results
+p <- modelsummary::modelplot(list("simple" = reg1, "zip fixed effects" = reg2),
+                        coef_omit = "(Intercept)") +
+  geom_vline(xintercept = 0) +
+  labs(title = "Bivariate Correlation: Conflict in Previous vs. Current Months",
+       x = "",
+       y = "",
+       caption = "Shown is the strength of the correlation between conflict events \n on ZIP code level in PA in previous and current months in 2022") +
+  angle_theme
+
+print(p)
+
+## save plot
+ggsave("./4_Documentation/figures/zips_lag.png", plot = p, width = 10, height = 6, dpi = 300)
 
 ```
 <br>
@@ -340,20 +354,7 @@ p <- ggplot(df_tmp, aes(month, value, fill = variable)) +
 
 print(p)
 
-
 ### this is stupid and obvious
-
-
-
-# lol
-ggplot(df_tmp, aes(x=month, y=value, fill=variable)) +
-    geom_bar(stat='identity', position='dodge')
-
-
-
-
-## save plot
-#ggsave("4_Documentation/figures/months_events.png", plot = p, width = 10, height = 6, dpi = 300)
 
 ```
 <br>
