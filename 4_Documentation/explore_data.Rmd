@@ -72,14 +72,18 @@ angle_theme <- theme(plot.title = element_text(hjust = 0.5, size = 14),
 ## load merged dataset
 data_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset_Lag.csv", sep = ",")
 
-## load merged dataset
-data_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset_Lag.csv", sep = ",")
-
 ## load final clean dataset
-data_clean_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset_Lag_clean.csv")
+data_final_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset.csv")
 
 ## clean data
-data <- data_clean_raw %>% janitor::clean_names()
+data <- data_final_raw %>% janitor::clean_names() %>%
+  
+  # rename zcta variable
+  rename(zcta = zcta_conf) %>%
+  
+  # remove ", PA" from city names
+  mutate(name_of_zip_code = str_extract(name_of_zip_code, "^.*(?=(,))"))
+  
 
 ## load all ACLED data
 data_acled_all <- read.csv("../2_Dataset/a_Input_Datasets/US2020_2023.csv", sep = ",")
@@ -127,11 +131,11 @@ df <- data %>%
 
 ## df with zip code names and pop
 df_tmp <- data %>%
-  select(zcta, admin2, post_office_city_name, total_population_2022, population_per_square_land_mile_2022) %>%
+  select(zcta, admin2, name_of_zip_code, total_population_2022, population_per_square_land_mile_2022) %>%
   unique() %>%
   
   # remove ", PA" from city names
-  mutate(post_office_city_name = str_extract(post_office_city_name, "^.*(?=(,))"))
+  mutate(name_of_zip_code = str_extract(name_of_zip_code, "^.*(?=(,))"))
 
 
 ## merge names onto zip code df
@@ -146,7 +150,7 @@ df_all <- left_join(df, df_tmp, by = "zcta") %>%
 caption <- "Only post office city names in Pennsylvania with more than 5 conflicts in 2022 included, \n where post office city names correspond with unique zip codes"
 
 ## plot event freq by zip
-p <- ggplot(df_all, aes(reorder(post_office_city_name, -tot_events), tot_events, fill = factor(post_office_city_name))) +
+p <- ggplot(df_all, aes(reorder(name_of_zip_code, -tot_events), tot_events, fill = factor(name_of_zip_code))) +
   geom_bar(stat = "identity", position = "dodge", fill = "steelblue3") +
   labs(title = "Number of Conflicts per PA Zip Code in 2022",
        #subtitle = "Ordered in decreasing order",
@@ -154,8 +158,8 @@ p <- ggplot(df_all, aes(reorder(post_office_city_name, -tot_events), tot_events,
        y = "Number of Conflicts",
        caption = caption) +
   scale_y_continuous(limits = c(0, max(df_all$tot_events + 20))) +
-  #geom_text(aes(post_office_city_name, tot_events, label = str_c(tot_events, " %")),
-  geom_text(aes(post_office_city_name, tot_events, label = tot_events),
+  #geom_text(aes(name_of_zip_code, tot_events, label = str_c(tot_events, " %")),
+  geom_text(aes(name_of_zip_code, tot_events, label = tot_events),
             position = position_dodge(0.9), vjust = -0.5, size = 3) +
   angle_theme + theme(legend.position = "none")
 
@@ -173,13 +177,13 @@ ggsave("./figures/zips_events.png", plot = p, width = 10, height = 6, dpi = 300)
 title <- "Number of Conflicts vs. Population Density \n in PA Counties with Highest Number of Conflicts in 2022"
 
 ## plot pop density vs. events
-p <- ggplot(df_all, aes(x = tot_events, y = population_per_square_land_mile_2022, color = factor(post_office_city_name))) +
+p <- ggplot(df_all, aes(x = tot_events, y = population_per_square_land_mile_2022, color = factor(name_of_zip_code))) +
   geom_point(size = 3) +
   labs(title = title,
        x = "Number of Conflict Events",
        y = "Population Density",
        caption = "Only includes counties with more than 5 conflicts in 2022") +
-  geom_text(aes(label = post_office_city_name), hjust = 1, vjust = -1, size = 3, color = "black") +
+  geom_text(aes(label = name_of_zip_code), hjust = 1, vjust = -1, size = 3, color = "black") +
   angle_theme + 
   theme(legend.position = "none")
 
@@ -240,6 +244,85 @@ ggsave("4_Documentation/figures/months_events.png", plot = p, width = 10, height
 ```
 <br>
 
+## Use lag data
+```{r, include = TRUE, echo = TRUE}
+
+## create df with lag variables
+df_lag <- data %>%
+  select(zcta, month, name_of_zip_code, event_count, neighbor_conflicts, event_count_prev_year, event_count_prev_month)
+
+```
+<br>
+
+
+#### Event counts by month
+```{r, include = TRUE, echo = TRUE}
+
+## create df with month data
+df <- df_lag %>%
+  select(zcta, month, event_count, event_count_prev_month) %>%
+  
+  # create var if conflict in current and previous month
+  group_by(zcta) %>%
+  mutate(
+    conflict_persists = ifelse(event_count > 0 & event_count_prev_month > 0, 1, 0)
+  ) %>%
+  ungroup() %>%
+  filter(conflict_persists == 1) %>%
+  select(-conflict_persists)
+
+
+## vector with zips where conflict persists
+problematic_zips <- unique(df$zcta)
+
+
+## prepare df for plot
+df_tmp <- df %>%
+  filter(zcta == "19107") %>%
+  pivot_longer(cols = c(event_count, event_count_prev_month), names_to = "variable", values_to = "value")
+
+
+## plot
+p <- ggplot(df_tmp, aes(month, value, fill = variable)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  
+  labs(title = "Number of Conflicts in Philadelphia (19107) per Month in PA in 2022",
+       x = "",
+       y = "Number of Conflicts") +
+  scale_y_continuous(limits = c(0, max(df_tmp$value + 20))) +
+  geom_text(aes(month, value, label = value),
+            position = position_dodge(0.9), vjust = -0.5, size = 4) +
+  angle_theme + theme(legend.position = "none")
+
+print(p)
+
+
+### this is stupid and obvious
+
+
+
+# lol
+ggplot(df_tmp, aes(x=month, y=value, fill=variable)) +
+    geom_bar(stat='identity', position='dodge')
+
+
+
+
+## save plot
+#ggsave("4_Documentation/figures/months_events.png", plot = p, width = 10, height = 6, dpi = 300)
+
+```
+<br>
+
+
+
+
+
+
+
+
+
+
 ## Events across US states - table
 ```{r, include = TRUE, echo = TRUE}
 
@@ -257,7 +340,7 @@ df %>%
   arrange(desc(tot_events_2022)) %>%
   slice(1:10) %>%
   gt() %>%
-  gtsave("4_Documentation/tables/events_by_state.png")
+  gtsave("./tables/events_by_state.png")
 
 ```
 <br>
