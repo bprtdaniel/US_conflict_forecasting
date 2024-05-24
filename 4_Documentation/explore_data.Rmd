@@ -172,7 +172,7 @@ ggsave("./figures/zips_events.png", plot = p, width = 10, height = 6, dpi = 300)
 ```{r, include = TRUE, echo = TRUE}
 
 ## set title
-title <- "Number of Conflicts vs. Population Density \n in PA Counties with Highest Number of Conflicts in 2022"
+title <- "Number of Conflicts vs. Population Density \n in PA Zip Codees with Highest Number of Conflicts in 2022"
 
 ## plot pop density vs. events
 p <- ggplot(df_all, aes(x = tot_events, y = population_per_square_land_mile_2022, color = factor(name_of_zip_code))) +
@@ -180,7 +180,7 @@ p <- ggplot(df_all, aes(x = tot_events, y = population_per_square_land_mile_2022
   labs(title = title,
        x = "Number of Conflict Events",
        y = "Population Density",
-       caption = "Only includes counties with more than 5 conflicts in 2022") +
+       caption = "Only includes zip codes with more than 5 conflicts in 2022") +
   geom_text(aes(label = name_of_zip_code), hjust = 1, vjust = -1, size = 3, color = "black") +
   angle_theme + 
   theme(legend.position = "none")
@@ -260,23 +260,6 @@ print(p)
 
 ## save plot
 ggsave("./figures/months_lag.png", plot = p, width = 10, height = 6, dpi = 300)
-
-
-
-
-# bivariate correlation: strength of corr between prior conflict num and currect conflict num
-# both are positive, makes sense to use lags
-# no fixed effects (red): if conflict before, there will be conflict in current month
-# fixed effects model (blue): remove unobserved error on zip level, still effect is positive but not significant --> include in reg
-# effect of conflict past month on current month
-
-# neighbors
-
-#binary conflict yes no regressed on conflict lag
-#if there was a conflict, will there be another one?
-
-#zip code fixed effects to cancel out unobserved differences between zips
-
 
 ```
 <br>
