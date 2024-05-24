@@ -1,7 +1,4 @@
 # US_conflict_forecasting
-Setting up a repo for the United States conflict forecasting model 
-
-### Context:
 The primary goal of the project was to offer predictions of potential conflict hotspots at the most granular temporal and geographical levels for which data was available. Ideally, such a model would have been used to forecast future conflict and thereby provide early warnings to local governments or relevant authorities for threat assessment. The scope of this project, however, was training a supervised machine learning model to make predictions on previously unseen, yet observed data.
 
 Features used in the model:
