@@ -35,11 +35,6 @@ Grid search was used to optimize parameters for Random Forest and XGBoost models
 
 Models were evaluated using Mean Squared Error (MSE) and Root Mean Squared Error (RMSE). Comparisons between models with and without time-lag features identified the most predictive features.
 
-### Results 
-
-
-
-
 
 ### Project Setup:  
 To run the scripts, please follow this setup:
