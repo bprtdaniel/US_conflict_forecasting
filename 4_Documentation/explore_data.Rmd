@@ -76,14 +76,14 @@ angle_theme <- theme(plot.title = element_text(hjust = 0.5, size = 14),
 ```{r, include = TRUE, echo = TRUE, results = 'hide'}
 
 ## load final dataset
-data_final_raw <- read.csv("../2_Dataset/d_Final_Dataset/Final_Dataset_Lag.csv", sep = ",")
+data_final_raw <- read.csv("./2_Dataset/d_Final_Dataset/Final_Dataset_Lag.csv", sep = ",")
 
 ## clean data
 data <- data_final_raw %>% janitor::clean_names()
 
 
 ## load all ACLED data
-data_acled_all <- read.csv("../2_Dataset/a_Input_Datasets/US2020_2023.csv", sep = ",")
+data_acled_all <- read.csv("./2_Dataset/a_Input_Datasets/US2020_2023.csv", sep = ",")
 
 ```
 <br>
@@ -161,27 +161,52 @@ p <- ggplot(df_all, aes(reorder(post_office_city_name, -tot_events), tot_events,
   angle_theme + theme(legend.position = "none")
 
 print(p)
+
+## save plot
+ggsave("4_Documentation/figures/zips_events.png", plot = p, width = 10, height = 7, dpi = 300)
+
 ```
 <br>
 
 ```{r, include = TRUE, echo = TRUE}
 
-## plot pop density for zips with most events
-p <- ggplot(df_all, aes(reorder(admin2, -tot_events), population_per_square_land_mile_2022, fill = factor(admin2))) +
-  geom_bar(stat = "identity", position = "dodge", fill = "steelblue3") +
-  labs(title = "Number of Conflicts in 
-       Population in PA Counties with Highest Number of Conflicts in 2022",
-       #subtitle = "subtitle",
-       x = "",
-       y = "Population",
+## merge names onto zip code df
+df_all <- left_join(df, df_tmp, by = "zcta") %>%
+  filter(tot_events > 0)
+
+## plot pop density vs. events
+p <- ggplot(df_all, aes(x = tot_events, y = population_per_square_land_mile_2022, color = factor(post_office_city_name))) +
+  geom_point(size = 3) +
+  labs(title = "Number of Conflicts vs. Population Density in PA Counties with Highest Number of Conflicts in 2022",
+       x = "Number of Conflict Events",
+       y = "Population Density",
        caption = "Only includes counties with more than 5 conflicts in 2022") +
-  scale_y_continuous(limits = c(0, max(df_all$population_per_square_land_mile_2022 + 20))) +
-  #geom_text(aes(admin2, tot_events, label = str_c(tot_events, " %")),
-  geom_text(aes(admin2, tot_events, label = tot_events),
-            position = position_dodge(0.9), vjust = -0.5, size = 3) +
-  angle_theme + theme(legend.position = "none")
+  geom_text(aes(label = post_office_city_name), hjust = 1, vjust = -1, size = 3, color = "black") +
+  angle_theme + 
+  theme(legend.position = "none")
 
 print(p)
+
+## save plot
+ggsave("4_Documentation/figures/scatter_pop_events_zips.png", plot = p, width = 10, height = 7, dpi = 300)
+
+
+## plot pop density for zips with most events
+#p <- ggplot(df_all, aes(reorder(admin2, -tot_events), population_per_square_land_mile_2022, fill = factor(admin2))) +
+#  geom_bar(stat = "identity", position = "dodge", fill = "steelblue3") +
+#  labs(title = "Number of Conflicts in 
+#       Population in PA Counties with Highest Number of Conflicts in 2022",
+#       #subtitle = "subtitle",
+#       x = "",
+#       y = "Population",
+#       caption = "Only includes counties with more than 5 conflicts in 2022") +
+#  scale_y_continuous(limits = c(0, max(df_all$population_per_square_land_mile_2022 + 20))) +
+#  #geom_text(aes(admin2, tot_events, label = str_c(tot_events, " %")),
+#  geom_text(aes(admin2, tot_events, label = tot_events),
+#            position = position_dodge(0.9), vjust = -0.5, size = 3) +
+#  angle_theme + theme(legend.position = "none")
+
+#print(p)
 
 ```
 <br>
@@ -211,6 +236,9 @@ p <- ggplot(df, aes(month, tot_events, fill = factor(month))) +
 
 print(p)
 
+## save plot
+ggsave("4_Documentation/figures/months_events.png", plot = p, width = 10, height = 7, dpi = 300)
+
 ```
 <br>
 
@@ -238,10 +266,12 @@ df %>%
 ## Events across US states - map
 ```{r, include = TRUE, echo = TRUE}
 
+## prepare acled data
 df <- data_acled_all %>%
   filter(year == 2022) %>%
   select(event_id_cnty, event_date, admin1)
 
+## calculate conflict events by US state
 df_tmp <- df %>%
   group_by(admin1) %>%
   rename(us_state = admin1) %>%
@@ -261,7 +291,7 @@ df_tmp$us_state <- tolower(df_tmp$us_state)
 map_data <- us_states %>%
   left_join(df_tmp, by = c("region" = "us_state"))
 
-# Create the heat map
+## create heat map
 p <- ggplot(data = map_data, aes(x = long, y = lat, group = group, fill = tot_events_2022)) +
   geom_polygon(color = "black") +
   scale_fill_viridis_c(option = "plasma", direction = -1, na.value = "white") +
@@ -277,8 +307,10 @@ p <- ggplot(data = map_data, aes(x = long, y = lat, group = group, fill = tot_ev
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank())
 
-# Print the plot
 print(p)
+
+## save plot
+ggsave("4_Documentation/figures/us_heatmap.png", plot = p, width = 10, height = 7, dpi = 300)
 
 ```
 
