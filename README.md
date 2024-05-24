@@ -43,6 +43,7 @@ Ultimately, this project aims to enhance security and preparedness for individua
 
 Our project was modeled according to the ACLED CAST framework.
 
+---
 
 ### Project Setup:  
 To run the scripts, please follow this setup:
